@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
-
+/
         //Simulando um acesso a banco de dados para pegar estes nomes
       List<String> alunos = new ArrayList<>(Arrays.asList("Alex","Fran","Jose", "Carlos","Amanda","Ana"));
 
