@@ -1,5 +1,5 @@
-package alura.com.br;
-import android.app.Activity;
+package alura.com.br.ui.activity;
+
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -11,18 +11,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import alura.com.br.DAO.AlunoDAO;
+import alura.com.br.R;
+
+public class ListaAlunosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_main);
+      setContentView(R.layout.activity_lista_alunos);
+
+        AlunoDAO dao = new AlunoDAO();
 
         //Simulando um acesso a banco de dados para pegar estes nomes
-      List<String> alunos = new ArrayList<>(Arrays.asList("Alex","Fran","Jose", "Carlos","Amanda","Ana"));
+     // List<String> alunos = new ArrayList<>(Arrays.asList("Alex","Fran","Jose", "Carlos","Amanda","Ana"));
 
-        ListView listaDeAlunos = findViewById(R.id.activity_main_lista_de_alunos);
+        ListView listaDeAlunos = findViewById(R.id.activity_lista_alunos_listview);
 
-        listaDeAlunos.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, alunos));
+        listaDeAlunos.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dao.todos()));
+
 
         setTitle("Lista de alunos");
 
