@@ -1,11 +1,16 @@
 package alura.com.br.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +34,14 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         listaDeAlunos.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dao.todos()));
 
-
+        FloatingActionButton botaoNovoAluno = findViewById(R.id.activity_lista_alunos_fab_novo_aluno);
+        botaoNovoAluno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class));
+                Toast.makeText(getApplicationContext(), "teste de toast",Toast.LENGTH_LONG).show();
+            }
+        });
         setTitle("Lista de alunos");
 
         /*Aqui estou dinzendo que o objeto primeiroAluno é uma textview que veio do layout, fiz uma busca da view pelo ID dele
